@@ -1,24 +1,32 @@
 def main():
+    # ner = value
     num = 1
     ug = "word"
+    l = 's'
 
     num2 = 1.2
 
-    print(str(num)+ug+' ')
-    print(f'{ug} - {num}')
+    print(int(num2)+ug+' ')
+    print(f'{ug} - sadfsadfv {num} {l}')
 
     print(ug)
     print(num2)
-    # str,int,float,def,for, -> Not allowed to declare variable
+    # str,int,float,def,for,try catch -> Not allowed to declare variable
 
     # function
 
     def func(num1, num2):
+
         print('ji')
         return num1 + num2
 
-    # list
-    numbers = [1, 2, 3, 5, func(1, 23)]
+    # list array
+    numbers = [1, 2, 3, 5, func(1, 23), [], {}]
+
+    # set array unique value
+
+    set_numbers = set([1, 2, 2, 3, 3])
+    print(set_numbers)
 
     # dictionary
     hun = {
@@ -67,6 +75,8 @@ def main():
         print(i)
 
     # if condtion
+    # true or false  = true
+    # true and true  = true
     if numbers[1] < numbers[0] or numbers[2] > number[3]:
         print('more')
     elif numbers[2] > numbers[3]:
@@ -115,6 +125,20 @@ def inner(num=1):
         inner(num=2)
 
 
-# print(inner())
-# n = input('Hey you please enter number:')
-# print(n)
+num = 10
+i = 0
+
+while True:
+    try:
+        import time
+        print(i)
+        i += 1
+        time.sleep(5)
+    except KeyboardInterrupt:
+        inp = input("do you want to exit press Y?:")
+        if inp == 'y' or inp == 'Y':
+            exit(1)
+
+        # print(inner())
+        # n = input('Hey you please enter number:')
+        # print(n)

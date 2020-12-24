@@ -1,5 +1,6 @@
 def main():
     # ner = value
+    # Declare variables
     num = 1
     ug = "word"
     l = 's'
@@ -11,6 +12,7 @@ def main():
 
     print(ug)
     print(num2)
+
     # str,int,float,def,for,try catch -> Not allowed to declare variable
 
     # function

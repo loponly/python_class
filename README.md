@@ -31,6 +31,8 @@ Python Class
 3. Reading and writing into CSV
 4. Reading and writing into light database sqllite
 
+## Day 3
+
 # Web scraping with BS
 
 1. Using Requests

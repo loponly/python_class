@@ -33,14 +33,19 @@ Python Class
 
 # Web scraping with BS
 
+1. Using Requests
+2. Using Session
+3. Using BS to scrape
+4. Scrapping Unegui as an Example
+
 # Browser Automation with Selenium
+
+# Controlling mouse and keyboard
 
 # Excel Manipulation
 
 # Word Manipulation
 
 # Send and Retrieving email
-
-# Controlling mouse and keyboard
 
 # Debugging

@@ -40,6 +40,8 @@ Python Class
 3. Using BS to scrape
 4. Scrapping Unegui as an Example
 
+## Day 4
+
 # Browser Automation with Selenium
 
 # Controlling mouse and keyboard

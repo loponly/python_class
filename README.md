@@ -49,9 +49,7 @@ Python Class
 3. Locating Element
 4. Actions, Click, send keys,
 
-# Word Manipulation
-
-# Excel Manipulation
+# Web Site
 
 # Controlling mouse and keyboard
 

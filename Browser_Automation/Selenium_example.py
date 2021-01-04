@@ -9,8 +9,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-import hashlib
-
 
 options = webdriver.ChromeOptions()
 
@@ -50,9 +48,10 @@ options.add_argument('--download.default_directory=../download')
 
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
+# Enter your url
 driver.get('https://103.229.178.4:444/login')
 
-# print(driver.title)
+# Element Selector
 username = driver.find_element_by_css_selector('input[name="username"]')
 password = driver.find_element_by_css_selector('input[name="secretkey"]')
 
@@ -63,6 +62,8 @@ password.send_keys('test')
 
 button.click()
 
+# wait function
+
 
 def wait_until(driver, selector_text):
     return WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located(
@@ -70,9 +71,9 @@ def wait_until(driver, selector_text):
 
 
 def click_element(dirver, menu_name):
-
     elements = driver.find_elements_by_css_selector(
         'span.ng-binding')
+
     # element.click()
     # element.send_keys() -> input type
     # element.clear() -> clears input

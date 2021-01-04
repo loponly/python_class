@@ -67,6 +67,6 @@ class Unegui():
 
 
 if __name__ == "__main__":
-    for i, obj in enumerate([Unegui('/l-hdlh/l-hdlh-zarna/'), Unegui('/avto-mashin/-avtomashin-zarna/')]):
+    for i, obj in enumerate([Unegui('/l-hdlh/l-hdlh-zarna/')]):
         obj.filename = f'output_{i}.csv'
         obj.run()

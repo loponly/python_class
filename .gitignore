@@ -25,6 +25,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+user_data_dir/
 MANIFEST
 # r'(^[a-z0-9]+[\._]?[a-z0-9]+)(\@)([a-z0-9]+)(\.)(com|net)'
 # PyInstaller

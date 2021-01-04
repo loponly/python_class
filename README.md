@@ -44,11 +44,18 @@ Python Class
 
 # Browser Automation with Selenium
 
-# Controlling mouse and keyboard
+1. Selenium Installation
+2. Websdrivers Chrome , IE, firefox
+3. Locating Element
+4. Actions, Click, send keys,
+
+# Word Manipulation
 
 # Excel Manipulation
 
-# Word Manipulation
+# Controlling mouse and keyboard
+
+1. Pyautogui Installation
 
 # Send and Retrieving email
 

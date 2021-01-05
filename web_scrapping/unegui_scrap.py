@@ -8,6 +8,7 @@ class Unegui():
     filename = 'unegui_ouput.csv'
 
     # init
+    # with validation
     def __init__(self, sub_url):
         self.url = self.base_url + sub_url
 
@@ -15,6 +16,7 @@ class Unegui():
         with open(self.filename, 'w') as f:
             f.write('title,desription,price\n')
             for line in data:
+
                 f.write(','.join(list(line.values()))+'\n')
 
     def get_content(self, soup):

@@ -42,9 +42,10 @@ options.add_argument('download.default_directory=../driver/')
 #     return options
 
 options.add_argument('--ignore-certificate-errors')
-options.add_argument('--headless')
-options.add_argument('--download.default_directory=../download')
-
+# options.add_argument('--headless')
+# options.add_argument('--download.default_directory=../download')
+options.add_experimental_option(
+    "prefs", {"download.default_directory": "download"})
 
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 

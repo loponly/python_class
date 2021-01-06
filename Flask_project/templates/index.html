@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+index
+{% endblock %}
+
+{% block content %}
+<img src="{{ url_for('static',filename= 'images/images.jpeg') }}"  />
+<h1>This is index page</h1>
+{% if data %}
+<h1>{{ data['email'] }}</h1>
+<h1>{{ data['password'] }}</h1>
+<h1>{{ data['checkbox'] }}</h1>
+{% endif %}
+{% endblock %}
+

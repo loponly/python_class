@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Unegui
+{% endblock %}
+
+{% block content %}
+
+<div class="card-header">{{ data.title }}</div>
+<div class="card-body">{{ data.description }}</div>
+<h3>{{ data.price }}</h3>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="{{ url_for('unegui',index=1 )}}">1</a></li>
+      <li class="page-item"><a class="page-link" href="{{ url_for('unegui',index=2 )}}">2</a></li>
+      <li class="page-item"><a class="page-link" href="{{ url_for('unegui',index=3 )}}">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+
+{% endblock %}
+

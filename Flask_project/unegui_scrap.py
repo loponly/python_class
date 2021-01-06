@@ -69,11 +69,13 @@ class Unegui():
             all_data.extend(self.get_content(soup))
 
             self.url = f"{self.base_url}{link[0].attrs['href']}"
-            i += 1
-            if i > 3:
-                break
+            break
+            # i += 1
+            # if i > 1:
+            #     break
+        return all_data
 
-        self.saveToCsv(all_data)
+        # self.saveToCsv(all_data)
 
 
 if __name__ == "__main__":

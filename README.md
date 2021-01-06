@@ -51,6 +51,12 @@ Python Class
 
 # Web Site
 
+1. Decorator function
+2. Flask Installation
+3. Hello world example
+4. Request Methodts
+5. Templates
+
 # Controlling mouse and keyboard
 
 1. Pyautogui Installation

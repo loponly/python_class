@@ -14,6 +14,8 @@ def index():
         return render_template('index.html', data=request.form)
     return 'Now Allowed'
 
+# some data
+
 
 @app.route('/about')
 def about():

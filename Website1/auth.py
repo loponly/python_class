@@ -6,9 +6,9 @@ from functools import wraps
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@bp.route('/')
-def index():
-    return 'This is auth'
+# @bp.route('/')
+# def index():
+#     return 'This is auth'
 
 
 @bp.route('/register', methods=('GET', 'POST'))
@@ -28,7 +28,7 @@ def register():
         elif not password:
             error = 'Please enter your password!'
         elif db_.execute('SELECT id FROM user WHERE username = ?', (username,)).fetchone() is not None:
-            error = f'User {username} is already registred'
+            error = 'User ' + username + 'is already registred'
 
         if error is None:
             db_.execute('INSERT INTO user(username,password) VALUES(?,?)',
@@ -70,7 +70,6 @@ def login():
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
-
     if user_id is None:
         g.user = None
     else:

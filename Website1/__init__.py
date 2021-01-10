@@ -1,9 +1,9 @@
 from flask import Flask
 import os
 
-from . import db
-from . import auth
-from . import blog
+import db
+import auth
+import blog
 
 
 def create_app(test_config=None):
@@ -31,5 +31,8 @@ def create_app(test_config=None):
     return app
 
 
-if __name__ == "__main__":
-    app = create_app()
+# if __name__ == "__main__":
+app = create_app()
+
+
+# scp -r -i /Users/macbookpro/.ssh/website-security /Users/macbookpro/Documents/python_class/python_class/Website1 root@95.217.211.178:/var/www/Website1

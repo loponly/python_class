@@ -1,4 +1,4 @@
-from flask import redirect, g, request, Blueprint, render_template, url_for, abort
+from flask import redirect, g, request, Blueprint, render_template, url_for, abort, flash
 
 from . import auth
 from . import db
@@ -18,10 +18,11 @@ def index():
 @bp.route('/create', methods=('GET', 'POST'))
 @auth.login_required
 def create():
+    error = None
     if request.method == 'POST':
         titile = request.form['title']
         body = request.form['body']
-        error = None
+
         if titile is None:
             error = 'Title is empty'
         elif body is None:
@@ -32,7 +33,7 @@ def create():
             "INSERT INTO blog(author_id,title,body) VALUES (?,?,?);", (g.user['id'], titile, body))
         db_.commit()
         return redirect(url_for('blog.index'))
-
+    flash(error)
     return render_template('blog/create.html')
 
 
@@ -40,22 +41,26 @@ def create():
 @auth.login_required
 def edit(id):
     blog = get_blog(id)
-
+    error = None
     if request.method == 'POST':
-        titile = request.form['title']
-        body = request.form['body']
-        error = None
+        titile = request.form['title'].strip()
+        body = request.form['body'].strip()
+
         if titile is None:
-            error = 'Title is empty'
+            error = 'Title is none'
         elif body is None:
             error = 'Body is empty'
+        elif titile == '':
+            error = 'Title is empty'
 
-        db_ = db.get_db()
-        db_.execute(
-            "UPDATE blog SET title=?, body=? WHERE id=?;", (titile, body, id))
-        db_.commit()
-        return redirect(url_for('blog.index'))
+        if error is None:
+            db_ = db.get_db()
+            db_.execute(
+                "UPDATE blog SET title=?, body=? WHERE id=?;", (titile, body, id))
+            db_.commit()
+            return redirect(url_for('blog.index'))
 
+        flash(error)
     return render_template('blog/edit.html', data=blog)
 
 

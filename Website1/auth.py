@@ -1,0 +1,95 @@
+from . import db
+from flask import g, render_template, request, Blueprint, redirect, flash, session, url_for
+from werkzeug.security import generate_password_hash, check_password_hash
+from functools import wraps
+
+bp = Blueprint('auth', __name__, url_prefix='/auth')
+
+
+@bp.route('/')
+def index():
+    return 'This is auth'
+
+
+@bp.route('/register', methods=('GET', 'POST'))
+def register():
+    if g.user is not None:
+        return redirect(url_for('hello'))
+
+    elif request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        db_ = db.get_db()
+        error = None
+
+        if not username:
+            error = 'Please enter your username!'
+        elif not password:
+            error = 'Please enter your password!'
+        elif db_.execute('SELECT id FROM user WHERE username = ?', (username,)).fetchone() is not None:
+            error = f'User {username} is already registred'
+
+        if error is None:
+            db_.execute('INSERT INTO user(username,password) VALUES(?,?)',
+                        (username, generate_password_hash(password)))
+            db_.commit()
+            return redirect(url_for('auth.login'))
+
+        flash(error)
+    return render_template('auth/register.html')
+
+
+@bp.route('/login', methods=('GET', 'POST'))
+def login():
+    if g.user is not None:
+        return redirect(url_for('hello'))
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        error = None
+        db_ = db.get_db()
+        user = db_.execute(
+            'SELECT * FROM user WHERE username = ?', (username,)).fetchone()
+
+        if user is None:
+            error = 'Incorrect Username!'
+
+        elif not check_password_hash(user['password'], password):
+            error = 'Incorrect Password!'
+
+        if error is None:
+            session.clear()
+            session['user_id'] = user['id']
+            return redirect(url_for('hello'))
+        flash(error)
+    return render_template('auth/login.html')
+
+
+@bp.before_app_request
+def load_logged_in_user():
+    user_id = session.get('user_id')
+
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = db.get_db().execute(
+            'SELECT * FROM user WHERE id = ?', (user_id,)).fetchone()
+
+
+@bp.route('/logout')
+def logout():
+    session.clear()
+    g.pop('user', None)
+
+    return redirect(url_for('auth.login'))
+
+
+def login_required(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if g.user is None:
+            return redirect(url_for('auth.login'))
+        return func(*args, **kwargs)
+    return wrapper

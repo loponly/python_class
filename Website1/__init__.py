@@ -1,0 +1,33 @@
+from flask import Flask
+import os
+
+from . import db
+from . import auth
+
+
+def create_app(test_config=None):
+    app = Flask(__name__, instance_relative_config=True)
+
+    app.config.from_mapping(
+        SECRET_KEY='dev',
+        DATABASE=os.path.join(app.instance_path, 'blog.db')
+    )
+
+    db.init_app(app)
+
+    app.register_blueprint(auth.bp)
+
+    try:
+        os.makedirs(app.instance_path)
+    except OSError:
+        pass
+
+    @app.route('/hello')
+    def hello():
+        return 'Hello, World! '
+
+    return app
+
+
+if __name__ == "__main__":
+    app = create_app()

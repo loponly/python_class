@@ -49,7 +49,9 @@ Python Class
 3. Locating Element
 4. Actions, Click, send keys,
 
-# Web Site
+## Day 5
+
+# Web Site Part 1
 
 1. Decorator function
 2. Flask Installation
@@ -57,10 +59,13 @@ Python Class
 4. Request Methodts
 5. Templates
 
-# Controlling mouse and keyboard
+## Day 6
 
-1. Pyautogui Installation
+# Web Site Part 2
 
-# Send and Retrieving email
-
-# Debugging
+1. Website Database
+2. CLI Comands
+3. App and request context manager
+4. Blueprints
+5. Packaging the project
+6. Deploy using Apache2 and mod_wsgi

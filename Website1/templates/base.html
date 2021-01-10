@@ -9,9 +9,19 @@
 </head>
 <body>
 
- 
-
     <div class="container">
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                {% if g.user %}
+                <a class="navbar-brand" href="{{ url_for('blog.index') }}">Hello,{{ g.user['username']}}</a>  
+                <a class="navbar-brand" href="{{ url_for('blog.create') }}">Create</a>  
+                <a class="navbar-brand" href="{{ url_for('auth.logout') }}">Logout</a>  
+                {% else %}         
+                <a class="navbar-brand" href="{{ url_for('auth.login') }}">Login</a>           
+                <a class="navbar-brand" href="{{ url_for('auth.register') }}">Register</a>   
+                {% endif %}                 
+              </div>
+          </nav>
 
         {% for message in get_flashed_messages() %}
         <div class="alert alert-danger" role="alert">

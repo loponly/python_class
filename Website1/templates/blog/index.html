@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Blog Main
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+
+  
+{% for article in datas %}
+<div class="card-body">
+    <h5 class="card-title">{{article['title']}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{article['created']}}</h6>
+    <p class="card-text">{{article['body']}}</p>
+    <a href="{{ url_for('blog.edit',id=article['id']) }}" class="card-link">Edit</a>
+    <a href="{{ url_for('blog.delete',id=article['id']) }}" class="card-link">Delete</a>
+  </div>
+
+  {% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Blog
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="{{ url_for('blog.edit',id=data.id) }}">
+    <div class="mb-3">
+      <label  class="form-label">Title</label>
+      <input name='title' type="text" class="form-control" value="{{data.title }}">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Body</label>
+      <input name='body' type="text" class="form-control" value="{{data.body }}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Edit Blog</button>
+  </form>
+  
+{% endblock %}

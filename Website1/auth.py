@@ -14,7 +14,7 @@ def index():
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if g.user is not None:
-        return redirect(url_for('hello'))
+        return redirect(url_for('blog.index'))
 
     elif request.method == 'POST':
         username = request.form['username']
@@ -43,7 +43,7 @@ def register():
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if g.user is not None:
-        return redirect(url_for('hello'))
+        return redirect(url_for('blog.index'))
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -62,7 +62,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('hello'))
+            return redirect(url_for('blog.index'))
         flash(error)
     return render_template('auth/login.html')
 

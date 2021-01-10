@@ -3,6 +3,7 @@ import os
 
 from . import db
 from . import auth
+from . import blog
 
 
 def create_app(test_config=None):
@@ -16,6 +17,7 @@ def create_app(test_config=None):
     db.init_app(app)
 
     app.register_blueprint(auth.bp)
+    app.register_blueprint(blog.bp)
 
     try:
         os.makedirs(app.instance_path)

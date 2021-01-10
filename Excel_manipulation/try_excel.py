@@ -13,7 +13,6 @@ print('This is a %d \n %s' % (number, name))
 print('This is a'+str(number)+'\n '+name+'')
 print(f'This is a {number} \n {name}')
 
-
 ws = wb.active
 
 for cell in ws['A1:ZZ999']:

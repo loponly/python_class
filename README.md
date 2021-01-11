@@ -69,3 +69,14 @@ Python Class
 4. Blueprints
 5. Packaging the project
 6. Deploy using Apache2 and mod_wsgi
+
+## Day 7
+
+# Web site deployment and automation
+
+1. Preparint the Ubuntu server
+2. Installing apache and mod_wsgi
+3. Deploing Falsk project
+4. Configure apache
+5. Fabric server automation
+6. Excel mannipulation

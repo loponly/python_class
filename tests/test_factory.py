@@ -24,6 +24,7 @@ def test_init_db(runner, monkeypatch):
     result = runner.invoke(args=['init-table'])
     assert result.output == 'Tables are created\n'
     assert Recorder.called
+    assert 0
 
 
 if __name__ == "__main__":

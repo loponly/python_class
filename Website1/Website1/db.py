@@ -22,6 +22,13 @@ def close_db(e=None):
         db.close()
 
 
+def init_db():
+    db = get_db()
+    with current_app.open_resource('sql/schema.sql') as f:
+        db.executescript(f.read().decode('utf8'))
+        db.commit()
+
+
 @click.command('init-table')
 @with_appcontext
 def init_tables():

@@ -52,6 +52,11 @@ class TruckTransport(Transport):
         return 'Delivering method is Truck'
 
 
+class AirTransport(Transport):
+    def planDelivery(self) -> str:
+        return 'Delivering method is Air'
+
+
 class SeaLogistic(Logistics):
 
     def create_Transport(self) -> Transport:
@@ -64,6 +69,12 @@ class RoadLogistic(Logistics):
         return TruckTransport()
 
 
+class AirLogistic(Logistics):
+
+    def create_Transport(self) -> Transport:
+        return AirTransport()
+
+
 def client_code(creator):
     """
     The client code works with an instance of a concrete creator, albeit through
@@ -71,14 +82,15 @@ def client_code(creator):
     the base interface, you can pass it any creator's subclass.
     """
 
+    print("\n")
     print(f"App: Launched with the {type(creator).__name__}.")
     print(f"Client: I'm not aware of the creator's class, but it still works.\n"
           f'{creator.deilver()}')
-
-    print("\n")
 
 
 if __name__ == "__main__":
     client_code(SeaLogistic())
 
     client_code(RoadLogistic())
+
+    client_code(AirLogistic())

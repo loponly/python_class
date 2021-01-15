@@ -80,3 +80,7 @@ Python Class
 4. Configure apache
 5. Fabric server automation
 6. Excel mannipulation
+
+## Day 8
+
+# Design Patterns

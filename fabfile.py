@@ -4,6 +4,7 @@ from fabric.api import *
 env.user = 'root'
 # the servers where the commands are executed
 env.hosts = ['95.217.211.178']
+# pack file
 
 
 def pack():

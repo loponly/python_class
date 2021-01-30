@@ -198,6 +198,9 @@ class DownCommand(ICommand):
 
 
 class Invoker():
+    '''
+    Invokes all the commands
+    '''
 
     def __init__(self,
                  Adapter: IAdapaterReicever):
@@ -208,6 +211,7 @@ class Invoker():
     def press(self, Command: ICommand):
 
         command = Command(self.Receiver)
+
         self.__history.append(command)
         command.execute()
 
@@ -225,33 +229,26 @@ class Invoker():
 
         self.__history = []
 
+    def bunchOffCommands(self, commands: list):
+        for command in commands:
+            self.press(command)
+
 
 if __name__ == '__main__':
 
     print('='*39)
     sonyTV = Invoker(TVAdapaterReicever(TVDevice('Sony')))
 
-    sonyTV.press(OnCommand)
-    sonyTV.press(OffCommand)
-    sonyTV.press(UpCommand)
-    sonyTV.press(UpCommand)
-    sonyTV.press(DownCommand)
-    sonyTV.press(DownCommand)
-    sonyTV.press(DownCommand)
+    sonyTV.bunchOffCommands(
+        [OnCommand, UpCommand, UpCommand, DownCommand, OffCommand])
 
     print('Undoing all the commands')
     sonyTV.undoAll()
 
     print('='*39)
     iphone = Invoker(MobileAdapaterReicever(MobileDevice('Iphone', 'X')))
-
-    iphone.press(OnCommand)
-    iphone.press(OffCommand)
-    iphone.press(UpCommand)
-    iphone.press(UpCommand)
-    iphone.press(DownCommand)
-    iphone.press(DownCommand)
-    iphone.press(DownCommand)
+    sonyTV.bunchOffCommands(
+        [OnCommand, UpCommand, UpCommand, DownCommand, OffCommand])
 
     print('Undoing all the commands')
     iphone.undoAll()

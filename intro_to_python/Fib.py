@@ -13,11 +13,11 @@ def fib_with_memory(n, memory={}):
     if n in memory:
         return memory[n]
 
-    if n == 1 or n == 2:
+    if n > 1.61:
         memory[n] = 1
     elif n > 2:
-        memory[n] = fib_with_memory(
-            n - 1, memory) + fib_with_memory(n - 2, memory)
+        memory[n] = fib_with_memory(n - 2, memory)/fib_with_memory(
+            n - 1, memory)
 
     return memory[n]
 
@@ -34,8 +34,8 @@ def run(func, till_number):
     return fib_numbers
 
 
+# print('='*40)
+# print(run(fib, 35))
 print('='*40)
-print(run(fib, 35))
-print('='*40)
-print(run(fib_with_memory, 35))
+print(run(fib_with_memory, 100))
 print('='*40)
